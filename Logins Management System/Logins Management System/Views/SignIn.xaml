@@ -1,0 +1,31 @@
+﻿<ContentDialog
+    x:Class="LoginsManagementSystem.Views.SignIn"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LoginsManagementSystem.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="SIGN IN"
+    PrimaryButtonText="sign in"  
+    SecondaryButtonText="cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    <ContentDialog.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF636363" Offset="1"/>
+            <GradientStop Color="#FFD1D1D1" Offset="0.297"/>
+        </LinearGradientBrush>
+    </ContentDialog.Background>
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TextBox Name="userNameTextBox" Header="User name"/>
+        <PasswordBox Name="passwordTextBox" Header="Password" />
+        <CheckBox Name="saveUserNameCheckBox" Content="Save user name"/>
+
+        <TextBlock x:Name="errorTextBlock" />
+
+        <!-- Content body -->
+        <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."  TextWrapping="Wrap" />
+    </StackPanel>
+</ContentDialog>
