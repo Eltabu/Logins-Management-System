@@ -44,7 +44,7 @@
                             <SymbolIcon Symbol="Caption"/>
                             <TextBlock Text="Main Page" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0">
+                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0" Tag="AddLog">
                             <SymbolIcon Symbol="Add"/>
                             <TextBlock Text="Add Log" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
