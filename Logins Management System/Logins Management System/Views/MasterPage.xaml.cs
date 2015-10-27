@@ -24,7 +24,8 @@ namespace LoginsManagementSystem.Views
     {
         public MasterPage()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
+            this.RequestedTheme = ElementTheme.Dark;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,16 @@ namespace LoginsManagementSystem.Views
             {
                 Application.Current.Exit();
             }
+        }
+
+        private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.RequestedTheme = ElementTheme.Light;
+        }
+
+        private void ThemeToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.RequestedTheme = ElementTheme.Dark;
         }
     }
 }
