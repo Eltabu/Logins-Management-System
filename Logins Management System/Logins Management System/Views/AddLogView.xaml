@@ -7,129 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
 
         <VisualStateManager.VisualStateGroups>
             <!-- Visual states reflect the application's window size -->
             <VisualStateGroup>
-
                 <VisualState x:Name="SupeerWideLayout">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1080" />
+                        <AdaptiveTrigger MinWindowWidth="740" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
 
-                        <!-- Log Name -->
-                        <Setter Target="LogNmae.(RelativePanel.Below)" Value="CategoryList" />
-                        <Setter Target="LogNmae.MinWidth" Value="400" />
-
-                        <!-- Strengh tGrid -->
-                        <Setter Target="StrenghtGrid.(RelativePanel.Below)" Value="LogNmae" />
-
-                        <!-- User Name -->
-                        <Setter Target="UserName.(RelativePanel.Below)" Value="StrenghtGrid" />
-                        <Setter Target="UserName.MinWidth" Value="400" />
-
-                        <!-- Password -->
-                        <Setter Target="Password.(RelativePanel.Below)" Value="UserName" />
-                        <Setter Target="Password.MinWidth" Value="400" />
-
-                        <!-- RePassword -->
-                        <Setter Target="RePassword.(RelativePanel.Below)" Value="Password" />
-                        <Setter Target="RePassword.MinWidth" Value="400" />
-
-                        <!-- Address -->
-                        <Setter Target="Address.(RelativePanel.Below)" Value="RePassword" />
-                        <Setter Target="Address.MinWidth" Value="400" />
-
-                        <!-- Description Grid -->
-                        <Setter Target="DescriptionGrid.(RelativePanel.RightOf)" Value="Password" />
-                        <Setter Target="DescriptionGrid.MinWidth" Value="400" />
-                        <Setter Target="DescriptionGrid.MinHeight" Value="400" />
-                        <Setter Target="DescriptionGrid.Margin" Value="50,5,5,5" />
-
+                        <!--Main Grid-->
+                        <Setter Target="MainGrid.Margin" Value="50,0,50,0" />
 
                     </VisualState.Setters>
                 </VisualState>
-
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="641" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-
-                        <!-- Log Name -->
-                        <Setter Target="LogNmae.(RelativePanel.Below)" Value="CategoryList" />
-                        <Setter Target="LogNmae.MinWidth" Value="400" />
-
-                        <!-- Strengh tGrid -->
-                        <Setter Target="StrenghtGrid.(RelativePanel.Below)" Value="LogNmae" />
-
-                        <!-- User Name -->
-                        <Setter Target="UserName.(RelativePanel.Below)" Value="StrenghtGrid" />
-                        <Setter Target="UserName.MinWidth" Value="400" />
-
-                        <!-- Password -->
-                        <Setter Target="Password.(RelativePanel.Below)" Value="UserName" />
-                        <Setter Target="Password.MinWidth" Value="400" />
-
-                        <!-- RePassword -->
-                        <Setter Target="RePassword.(RelativePanel.Below)" Value="Password" />
-                        <Setter Target="RePassword.MinWidth" Value="400" />
-
-                        <!-- Address -->
-                        <Setter Target="Address.(RelativePanel.Below)" Value="RePassword" />
-                        <Setter Target="Address.MinWidth" Value="400" />
-
-                        <!-- Description Grid -->
-                        <Setter Target="DescriptionGrid.(RelativePanel.Below)" Value="Address" />
-                        <Setter Target="DescriptionGrid.MinWidth" Value="430" />
-                        <Setter Target="DescriptionGrid.MinHeight" Value="250" />
-                        <Setter Target="DescriptionGrid.Margin" Value="5" />
-
-
-                    </VisualState.Setters>
-                </VisualState>
-
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-
-                        <!-- Log Name -->
-                        <Setter Target="LogNmae.(RelativePanel.Below)" Value="CategoryList" />
-                        <Setter Target="LogNmae.MinWidth" Value="350" />
-
-                        <!-- Strengh tGrid -->
-                        <Setter Target="StrenghtGrid.(RelativePanel.Below)" Value="LogNmae" />
-
-                        <!-- User Name -->
-                        <Setter Target="UserName.(RelativePanel.Below)" Value="StrenghtGrid" />
-                        <Setter Target="UserName.MinWidth" Value="350" />
-
-                        <!-- Password -->
-                        <Setter Target="Password.(RelativePanel.Below)" Value="UserName" />
-                        <Setter Target="Password.MinWidth" Value="350" />
-
-                        <!-- RePassword -->
-                        <Setter Target="RePassword.(RelativePanel.Below)" Value="Password" />
-                        <Setter Target="RePassword.MinWidth" Value="350" />
-
-                        <!-- Address -->
-                        <Setter Target="Address.(RelativePanel.Below)" Value="RePassword" />
-                        <Setter Target="Address.MinWidth" Value="350" />
- 
-                        <!-- Description Grid -->
-                        <Setter Target="DescriptionGrid.(RelativePanel.Below)" Value="Address" />
-                        <Setter Target="DescriptionGrid.Margin" Value="5" />
-                        <Setter Target="DescriptionGrid.MinHeight" Value="250" />
-                        <Setter Target="DescriptionGrid.MinWidth" Value="350" />                       
-
-                    </VisualState.Setters>
-                </VisualState>
-                
             </VisualStateGroup>
+            
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
@@ -137,7 +32,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
+        <StackPanel 
+            Grid.Row="0"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Right">
             <AppBarButton Icon="Cancel"/>
             <AppBarSeparator />
             <AppBarButton Icon="Undo"/>
@@ -145,16 +43,33 @@
             <AppBarButton Icon="Save"/>
         </StackPanel>
 
-        <Grid Grid.Row="1">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <RelativePanel Margin="10">
+            <Grid 
+                x:Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="MainGrid_FirstRow" Height="Auto" />
+                    <RowDefinition x:Name="MainGrid_SecondRow" Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="ForumGrid" Grid.Column="0" Margin="15,15,23,15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
                     <ComboBox
-                    x:Name="CategoryList"
-                    MinWidth="250"
-                    PlaceholderText="Pick a category"
-                    Margin="5">
+                        Grid.Row="1"
+                        x:Name="CategoryList"
+                        PlaceholderText="Pick a category"
+                        Margin="5" MinWidth="250">
                         <x:String>Blue</x:String>
                         <x:String>Green</x:String>
                         <x:String>Red</x:String>
@@ -162,17 +77,19 @@
                     </ComboBox>
 
                     <TextBox
-                    x:Name="LogNmae" 
-                    PlaceholderText="Enter log name"                     
-                    Margin="5"                   
+                        Grid.Row="2"
+                        x:Name="LogNmae" 
+                        PlaceholderText="Enter log name"                     
+                        Margin="5" Height="32"                   
                     />
 
                     <Grid 
+                        Grid.Row="3"
                         x:Name="StrenghtGrid" 
                         Height="95" Width="242" 
-                        Padding="10,0,0,0"
+                        Padding="10,0,0,0" HorizontalAlignment="Left" Margin="30,0,0,0"
                         >
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="35"/>
@@ -214,110 +131,135 @@
                     </Grid>
 
                     <TextBox
+                        Grid.Row="4"
                         x:Name="UserName" 
                         PlaceholderText="Enter user name"  
-                        Margin="5" 
+                        Margin="5" Height="32" 
                         />
 
                     <PasswordBox
+                        Grid.Row="5"
                         x:Name="Password"                   
                         PlaceholderText="Enter password" 
                         PasswordChar="*"
-                        Margin="5"
+                        Margin="5" Height="32"
                     />
 
                     <PasswordBox
+                        Grid.Row="6"
                         x:Name="RePassword"                   
                         PlaceholderText="Re: Enter password" 
                         PasswordChar="*"
-                        Margin="5"
+                        Margin="5" Height="32"
                     />
 
                     <TextBox
+                        Grid.Row="7"
                         x:Name="Address" 
                         PlaceholderText="Enter log adrress" 
                         MinWidth="350"  
-                        Margin="5" 
-                        RelativePanel.Below="RePassword"
+                        Margin="5"
+                        RelativePanel.Below="RePassword" Height="32"
                     />
+                </Grid>
 
-                    <Grid 
-                        x:Name="DescriptionGrid"
+                <Grid 
+                x:Name="DescriptionGrid" 
+                Grid.Column="0" 
+                Grid.Row="1" 
+                Margin="15,5,25,15" >
 
-                     >
-                        <RelativePanel Margin="0,0,0,20" HorizontalAlignment="Stretch">
-                            <RelativePanel.Resources>
-                                <Style TargetType="AppBarButton">
-                                    <Setter Property="IsCompact" Value="True"/>
-                                </Style>
-                            </RelativePanel.Resources>
-                            
-                            <AppBarButton x:Name="BoldButton" Icon="Bold" Click="BoldButton_Click" ToolTipService.ToolTip="Bold" RelativePanel.LeftOf="ItalicButton" Margin="0,0,8,0"/>
-                            <AppBarButton x:Name="ItalicButton" Icon="Italic" Click="ItalicButton_Click" ToolTipService.ToolTip="Italic" RelativePanel.LeftOf="FontColorButton" Margin="0,0,8,0"/>
-                            <AppBarButton x:Name="FontColorButton" Icon="FontColor" ToolTipService.ToolTip="Font color" RelativePanel.AlignRightWithPanel="True">
-                                <AppBarButton.Flyout>
-                                    <Flyout>
-                                        <Grid>
-                                            <Grid.Resources>
-                                                <Style TargetType="Rectangle">
-                                                    <Setter Property="Width" Value="50"/>
-                                                    <Setter Property="Height" Value="50"/>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition/>
-                                                <ColumnDefinition/>
-                                                <ColumnDefinition/>
-                                            </Grid.ColumnDefinitions>
-                                            <Button x:Name="black" Click="ColorButton_Click">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Black"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="gray" Click="ColorButton_Click" Grid.Row="1">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Gray"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="greenyellow" Click="ColorButton_Click" Grid.Column="1">
-                                                <Button.Content>
-                                                    <Rectangle Fill="GreenYellow"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="green" Click="ColorButton_Click" Grid.Row="1" Grid.Column="1">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Green"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="blue" Click="ColorButton_Click" Grid.Column="2">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Blue"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="red" Click="ColorButton_Click" Grid.Row="1" Grid.Column="2">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Red"/>
-                                                </Button.Content>
-                                            </Button>
+                    <Grid.Resources>
+                        <Style TargetType="AppBarButton">
+                            <Setter Property="IsCompact" Value="True"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                                        </Grid>
-                                    </Flyout>
-                                </AppBarButton.Flyout>
-                            </AppBarButton>
+                    <AppBarButton 
+                        x:Name="BoldButton" 
+                        Grid.Row="0" 
+                        Icon="Bold" 
+                        Click="BoldButton_Click" 
+                        ToolTipService.ToolTip="Bold" 
+                        Margin="5,0,0,0"/>
+                    
+                    <AppBarButton 
+                        x:Name="ItalicButton" 
+                        Grid.Row="0" 
+                        Icon="Italic" 
+                        Click="ItalicButton_Click" 
+                        ToolTipService.ToolTip="Italic" 
+                        Margin="75,0,0,0"/>
+                    
+                    <AppBarButton 
+                        x:Name="FontColorButton" 
+                        Grid.Row="0" 
+                        Icon="FontColor" 
+                        ToolTipService.ToolTip="Font color" 
+                        Width="67" 
+                        Margin="150,0,0,0">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <Grid>
+                                    <Grid.Resources>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Width" Value="50"/>
+                                            <Setter Property="Height" Value="50"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="black" Click="ColorButton_Click">
+                                        <Rectangle Fill="Black"/>
+                                    </Button>
+                                    <Button x:Name="gray" Click="ColorButton_Click" Grid.Row="1">
+                                        <Rectangle Fill="Gray"/>
+                                    </Button>
+                                    <Button x:Name="greenyellow" Click="ColorButton_Click" Grid.Column="1">
+                                        <Rectangle Fill="GreenYellow"/>
+                                    </Button>
+                                    <Button x:Name="green" Click="ColorButton_Click" Grid.Row="1" Grid.Column="1">
+                                        <Rectangle Fill="Green"/>
+                                    </Button>
+                                    <Button x:Name="blue" Click="ColorButton_Click" Grid.Column="2">
+                                        <Rectangle Fill="Blue"/>
+                                    </Button>
+                                    <Button x:Name="red" Click="ColorButton_Click" Grid.Row="1" Grid.Column="2">
+                                        <Rectangle Fill="Red"/>
+                                    </Button>
 
-                            <RichEditBox x:Name="editor" MinHeight="200" MaxHeight="400" RelativePanel.Below="BoldButton" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-                        </RelativePanel>
+                                </Grid>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
 
-                    </Grid>
+                    <RichEditBox 
+                                x:Name="editor"  
+                                Grid.Row="1" 
+                                MinWidth="200" 
+                                MinHeight="150" 
+                                Padding="6,3,6,5"
+                                Margin="5"/>
+                </Grid>
 
 
 
-                </RelativePanel>
-            </ScrollViewer>
-        </Grid>
+
+            </Grid>
+
+        </ScrollViewer>
+
+
     </Grid>
 </Page>
