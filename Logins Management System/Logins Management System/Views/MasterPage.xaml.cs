@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,11 +23,15 @@ namespace LoginsManagementSystem.Views
     /// </summary>
     public sealed partial class MasterPage : Page
     {
+
         public MasterPage()
         {
             this.InitializeComponent();
             this.RequestedTheme = ElementTheme.Dark;
-        }
+#if DEBUG
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+#endif      
+            }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -37,6 +42,8 @@ namespace LoginsManagementSystem.Views
         private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
             var item = e.ClickedItem as StackPanel;
+
+            Frame rootFrame = Window.Current.Content as Frame;
 
             if (item != null)
             {

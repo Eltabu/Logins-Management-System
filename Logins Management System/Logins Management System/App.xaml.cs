@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using LoginsManagementSystem.Views;
+using Windows.UI.Core;
 
 namespace LoginsManagementSystem
 {
@@ -47,7 +48,7 @@ namespace LoginsManagementSystem
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                this.DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
 
@@ -78,8 +79,35 @@ namespace LoginsManagementSystem
                 // parameter
                 rootFrame.Navigate(typeof(MasterPage), e.Arguments);
             }
+            // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
+            // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        /// <summary>
+        /// Invoked when a user issues a global back on the device.
+        /// If the app has no in-app back stack left for the current view/frame the user may be navigated away
+        /// back to the previous app in the system's app back stack or to the start screen.
+        /// In windowed mode on desktop there is no system app back stack and the user will stay in the app even when the in-app back stack is depleted.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            MasterPage currentPage = ((Frame)Window.Current.Content).Content as MasterPage;
+
+            if (currentPage == null && currentPage.MainFrame == null)
+                return;
+
+            //If we can go back and the event has not already been handled, do so.
+            if (currentPage.MainFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                currentPage.MainFrame.GoBack();
+            }
         }
 
         /// <summary>

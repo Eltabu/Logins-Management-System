@@ -27,7 +27,11 @@ namespace LoginsManagementSystem.Views
         public AddLogView()
         {
             this.InitializeComponent();
+
+            // I want this page to be always cached so that we don't have to add logic to save/restore state.
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
+
 
         private void BoldButton_Click(object sender, RoutedEventArgs e)
         {

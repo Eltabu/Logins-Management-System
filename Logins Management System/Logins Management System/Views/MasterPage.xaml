@@ -17,6 +17,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Splitter.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="Splitter.IsPaneOpen" Value="true"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="narrowState">
@@ -24,6 +25,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="Splitter.IsPaneOpen" Value="false"/>
                         <Setter Target="Splitter.DisplayMode" Value="CompactOverlay"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -48,11 +50,11 @@
                             <SymbolIcon Symbol="Add"/>
                             <TextBlock Text="Add Log" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0">
+                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0" Tag="Setting">
                             <SymbolIcon Symbol="Setting"/>
                             <TextBlock Text="Setting" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0">
+                        <StackPanel Orientation="Horizontal"  Margin="2,0,0,0" Tag="Exit">
                             <SymbolIcon Symbol="HangUp"/>
                             <TextBlock Text="Exit" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
@@ -73,7 +75,7 @@
 
             <!-- MainFrame Content -->
             <SplitView.Content>
-                <Frame x:Name="MainFrame" Margin="0" />
+                <Frame x:Name="MainFrame" Margin="0" x:FieldModifier="public"/>
             </SplitView.Content>
 
             
