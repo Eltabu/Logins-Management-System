@@ -5,12 +5,14 @@
     xmlns:local="using:LoginsManagementSystem"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Loaded="Page_Loaded">
+    mc:Ignorable="d" 
+    Loaded="Page_Loaded"
+    >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
+                <!-- Tablet or PC -->
                 <VisualState x:Name="wideState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="641" />
@@ -20,19 +22,83 @@
                         <Setter Target="Splitter.IsPaneOpen" Value="true"/>
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="narrowState">
+                <!-- small Tablet -->
+                <VisualState x:Name="TabletState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="360" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Splitter.IsPaneOpen" Value="false"/>
+                        <Setter Target="Splitter.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="AutoSuggestName.Width" Value="250"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!-- Phone -->
+                <VisualState x:Name="PhoneState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Splitter.IsPaneOpen" Value="false"/>
                         <Setter Target="Splitter.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="AutoSuggestName.Width" Value="150"/>
+                        <Setter Target="AutoSuggestName.PlaceholderText" Value="Search Names"/>
+                        <Setter Target="backButton.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <SplitView x:Name="Splitter" IsPaneOpen="True" OpenPaneLength="200" CompactPaneLength="48" DisplayMode="CompactInline" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="MasterAppBarGrid" Grid.Row="0" Background="{ThemeResource ButtonDisabledBackgroundThemeBrush}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- Hamburger Button -->
+            <Button
+                    x:Name="HamburgerButton"
+                    Width="{Binding ElementName=Splitter, Path=CompactPaneLength}"
+                    VerticalAlignment="Top"
+                    Click="HamburgerButton_Click" Height="40">
+                <StackPanel>
+                    <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                    <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                    <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                </StackPanel>
+
+            </Button>
+            <!-- AutoSuggestBox -->
+            <Grid  Grid.Row="0" HorizontalAlignment="Right" Margin="0,3,10,3" VerticalAlignment="Center">
+                <AutoSuggestBox
+                        x:Name="AutoSuggestName"
+                        PlaceholderText="Type a name (e.g. eltabu.ca)"
+                        TextChanged="AutoSuggestName_TextChanged"
+                        QueryIcon="Find"
+                        QuerySubmitted="AutoSuggestName_QuerySubmitted"
+                        SuggestionChosen="AutoSuggestName_SuggestionChosen"
+                        MinWidth="300"                    
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+            </Grid>
+            <!--Back Button-->
+            <Button x:Name="backButton" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                      Click="backButton_Click"
+                       Style="{StaticResource BackButtonStyle}"
+                      VerticalAlignment="Top"
+                      AutomationProperties.Name="Back"
+                      AutomationProperties.AutomationId="BackButton"
+                      AutomationProperties.ItemType="Navigation Button"
+                RelativePanel.RightOf="splitViewToggle" Margin="53,0,0,0" Width="50" Height="40">
+                <FontIcon x:Name="backButtonIcon" Glyph="&#xE72B;" />
+            </Button>
+        </Grid>
+
+        <SplitView x:Name="Splitter" IsPaneOpen="True" OpenPaneLength="200" CompactPaneLength="48" DisplayMode="CompactInline" Grid.RowSpan="1" Grid.Row="1" >
             <SplitView.Pane>
                 <Grid x:Name="SpliterGrid">
                     <Grid.RowDefinitions>
@@ -41,7 +107,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <ListView x:Name="NavLinksList" Margin="0,30,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch" ItemClick="NavLinksList_ItemClick" IsItemClickEnabled="True">
+                    <ListView x:Name="NavLinksList" Margin="0,5,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch" ItemClick="NavLinksList_ItemClick" IsItemClickEnabled="True">
                         <StackPanel Orientation="Horizontal"  Margin="2,0,0,0" Tag="MainPage">
                             <SymbolIcon Symbol="Caption"/>
                             <TextBlock Text="Main Page" Margin="24,0,0,0" VerticalAlignment="Center"/>
@@ -59,16 +125,14 @@
                             <TextBlock Text="Exit" Margin="24,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
 
-
                     </ListView>
-                    
+
                     <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,24" >
-                        <AppBarToggleButton Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked" Width="48">
+                        <AppBarToggleButton Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked" Width="48" Label="Theme">
                             <AppBarToggleButton.Icon>
                                 <FontIcon Glyph="&#xE771;" />
                             </AppBarToggleButton.Icon>
                         </AppBarToggleButton>
-                        <TextBlock Text="Theme" Margin="19,16,0,24" d:LayoutOverrides="Height"/>
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>
@@ -78,21 +142,8 @@
                 <Frame x:Name="MainFrame" Margin="0" x:FieldModifier="public"/>
             </SplitView.Content>
 
-            
+
         </SplitView>
 
-        <!-- Hamburger Button -->
-        <Button
-            x:Name="HamburgerButton"
-            Width="{Binding ElementName=Splitter, Path=CompactPaneLength}"
-            VerticalAlignment="Top"
-            Click="HamburgerButton_Click">
-            <StackPanel>
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-            </StackPanel>
-            
-        </Button>
     </Grid>
 </Page>

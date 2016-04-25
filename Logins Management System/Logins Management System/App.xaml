@@ -11,7 +11,47 @@
         <ResourceDictionary>
             <!-- Application-specific resources -->
             <converter:ValueToStringConverter x:Key="valueToStringConverter" />
+
+            <!--Back Button Style-->
+            <Style x:Key="BackButtonStyle" TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource BackButtonTemplate}" />
+            </Style>
+            <ControlTemplate x:Key="BackButtonTemplate" TargetType="Button">
+                <Grid x:Name="RootGrid">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightBaseLowBrush}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}" />
+                                </VisualState.Setters>
+                                <Storyboard>
+                                    <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <ContentPresenter x:Name="ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                              AutomationProperties.AccessibilityView="Raw"/>
+                </Grid>
+            </ControlTemplate>
         </ResourceDictionary>
-        
+                
     </Application.Resources>
 </Application>
