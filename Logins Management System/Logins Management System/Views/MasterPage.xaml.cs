@@ -56,12 +56,22 @@ namespace LoginsManagementSystem.Views
                             Splitter.IsPaneOpen = false;
                         }
                         break;
+
                     case "AddLog":
                         this.MainFrame.Navigate(typeof(AddLogView));
                         if (Window.Current.Bounds.Width < 640)
                         {
                             Splitter.IsPaneOpen = false;
                         }
+                        break;
+
+                    case "Setting":
+                        //TODO: Add Setting nevigation
+                        break;
+
+
+                    case "Exit":
+                        Application.Current.Exit();
                         break;
 
                     default:
