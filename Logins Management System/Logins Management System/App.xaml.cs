@@ -77,7 +77,7 @@ namespace LoginsManagementSystem
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MasterPage), e.Arguments);
+                rootFrame.Navigate(typeof(MasterPageView), e.Arguments);
             }
             // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
             // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
@@ -97,7 +97,7 @@ namespace LoginsManagementSystem
         /// <param name="e"></param>
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            MasterPage currentPage = ((Frame)Window.Current.Content).Content as MasterPage;
+            MasterPageView currentPage = ((Frame)Window.Current.Content).Content as MasterPageView;
 
             if (currentPage == null && currentPage.MainFrame == null)
                 return;

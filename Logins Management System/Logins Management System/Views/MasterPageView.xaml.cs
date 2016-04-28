@@ -21,10 +21,10 @@ namespace LoginsManagementSystem.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MasterPage : Page
+    public sealed partial class MasterPageView : Page
     {
 
-        public MasterPage()
+        public MasterPageView()
         {
             this.InitializeComponent();
             this.RequestedTheme = ElementTheme.Dark;
@@ -50,7 +50,7 @@ namespace LoginsManagementSystem.Views
                 switch (item.Tag.ToString())
                 {
                     case "MainPage":
-                        this.MainFrame.Navigate(typeof(MainPage));
+                        this.MainFrame.Navigate(typeof(MainPageView));
                         if (Window.Current.Bounds.Width < 640)
                         {
                             Splitter.IsPaneOpen = false;
@@ -66,7 +66,11 @@ namespace LoginsManagementSystem.Views
                         break;
 
                     case "Setting":
-                        //TODO: Add Setting nevigation
+                        this.MainFrame.Navigate(typeof(SettingView));
+                        if (Window.Current.Bounds.Width < 640)
+                        {
+                            Splitter.IsPaneOpen = false;
+                        }
                         break;
 
 

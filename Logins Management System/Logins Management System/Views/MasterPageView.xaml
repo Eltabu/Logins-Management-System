@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="LoginsManagementSystem.Views.MasterPage"
+    x:Class="LoginsManagementSystem.Views.MasterPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LoginsManagementSystem"

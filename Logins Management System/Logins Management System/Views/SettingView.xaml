@@ -1,0 +1,157 @@
+﻿<Page
+    x:Class="LoginsManagementSystem.Views.SettingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LoginsManagementSystem.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <!-- Visual states reflect the application's window size -->
+            <VisualStateGroup>
+
+                <VisualState x:Name="SupeerWideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="740" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainGrid.Margin" Value="50,0,50,0" />
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+            Grid.Row="0"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Right">
+            <AppBarButton Icon="Undo"/>
+            <AppBarSeparator />
+            <AppBarButton Icon="Save"/>
+        </StackPanel>
+
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+
+            <Grid x:Name="MainGrid" Margin="15,15,23,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="LabelGrid" Grid.Row="1" Margin="0,5,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock 
+                        x:Name="RenewPasswordLabel"
+                        Grid.Column="0"
+                        Text="Renew Password:" Margin="5,0,0,0"/>
+
+                    <Rectangle
+                        x:Name="SeparatorLine"
+                        Grid.Column="1" 
+                        VerticalAlignment="Center" 
+                        Height="1" 
+                        Margin="5,0" 
+                        Stroke="{ThemeResource AppBarItemForegroundThemeBrush}"/>
+                </Grid>
+
+
+                <PasswordBox
+                        Grid.Row="2"
+                        x:Name="Password"                   
+                        PlaceholderText="Enter password" 
+                        PasswordChar="*"
+                        Margin="5,10" Height="32"
+                    />
+
+                <PasswordBox
+                        Grid.Row="3"
+                        x:Name="RePassword"                   
+                        PlaceholderText="Re: Enter password" 
+                        PasswordChar="*"
+                        Margin="5" Height="32"
+                    />
+                <Grid x:Name="StrengthGrid" Grid.Row="4" Margin="0,5,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock 
+                        x:Name="StrengthLabel"
+                        Grid.Column="0"
+                        Text="Strength:" 
+                        Margin="5,10,4.773,10"/>
+                    
+                    <ProgressBar
+                        Grid.Column="1"
+                        x:Name="StrengthBar" 
+                        MinHeight="18" 
+                        Margin="5,11" 
+                        Value="0.5"/>
+                </Grid>
+
+                <Grid x:Name="ThemeLabelGrid" Grid.Row="5" Margin="0,35,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock 
+                        x:Name="ThemeLabel"
+                        Grid.Column="0"
+                        Text="Theme:" Margin="5,0,0,0"/>
+
+                    <Rectangle
+                        x:Name="ThemeSeparatorLine"
+                        Grid.Column="1" 
+                        VerticalAlignment="Center" 
+                        Height="1" 
+                        Margin="5,0" 
+                        Stroke="{ThemeResource AppBarItemForegroundThemeBrush}"/>
+                </Grid>
+
+                <Grid x:Name="ThemeGrid" Grid.Row="6" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock 
+                        x:Name="DefaultThemeLabel"
+                        Grid.Column="0"
+                        Text="Default Theme:"/>
+
+                    <ComboBox
+                        Grid.Column="1"
+                        x:Name="ThemeList" 
+                        Margin="10,0,0,0" 
+                        HorizontalAlignment="Stretch"/>
+
+                </Grid>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

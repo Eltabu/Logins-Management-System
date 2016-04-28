@@ -10,20 +10,14 @@
     PrimaryButtonText="sign in"  
     SecondaryButtonText="cancel"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
-    <ContentDialog.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF636363" Offset="1"/>
-            <GradientStop Color="#FFD1D1D1" Offset="0.297"/>
-        </LinearGradientBrush>
-    </ContentDialog.Background>
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick" Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
-    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="317">
         <TextBox Name="userNameTextBox" Header="User name"/>
         <PasswordBox Name="passwordTextBox" Header="Password" />
         <CheckBox Name="saveUserNameCheckBox" Content="Save user name"/>
 
-        <TextBlock x:Name="errorTextBlock" />
+        <TextBlock x:Name="errorTextBlock" CompositeMode="SourceOver" />
 
         <!-- Content body -->
         <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."  TextWrapping="Wrap" />
