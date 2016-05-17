@@ -161,12 +161,5 @@ namespace LoginsManagementSystem.View
             //}
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (MainFrame.CanGoBack)
-            {
-                MainFrame.GoBack();
-            }
-        }
     }
 }

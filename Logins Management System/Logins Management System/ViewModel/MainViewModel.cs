@@ -9,6 +9,7 @@ using LoginsManagementSystem.Model;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using LoginsManagementSystem.View;
+using Windows.UI.Xaml.Controls;
 
 namespace LoginsManagementSystem.ViewModel
 {
@@ -62,6 +63,24 @@ namespace LoginsManagementSystem.ViewModel
                                //{
                                //    Application.Current.Exit();
                                //}
+                           }));
+            }
+        }
+
+
+        private RelayCommand<Frame> _navigationBackButtonCommand; 
+        public RelayCommand<Frame> NavigationBackButtonCommand 
+        {
+            get
+            {
+                return _navigationBackButtonCommand
+                       ?? (_navigationBackButtonCommand = new RelayCommand<Frame>(
+                           (MainFrame) =>
+                           {
+                               if (MainFrame.CanGoBack)
+                               {
+                                   MainFrame.GoBack();
+                               }
                            }));
             }
         }

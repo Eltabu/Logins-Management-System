@@ -100,8 +100,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converter\ValueToStringConverter.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\IBusinessEntity.cs" />
     <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Model\LogInfo.cs" />
+    <Compile Include="Model\Setting.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\AddLogView.xaml.cs">
@@ -162,11 +166,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
