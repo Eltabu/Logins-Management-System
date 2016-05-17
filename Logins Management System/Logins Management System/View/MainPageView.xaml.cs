@@ -14,24 +14,23 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace LoginsManagementSystem.Views
+namespace LoginsManagementSystem.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MasterPageView : Page
+    public sealed partial class MainPageView : Page
     {
 
-        public MasterPageView()
+        public MainPageView()
         {
             this.InitializeComponent();
             this.RequestedTheme = ElementTheme.Dark;
 #if DEBUG
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
 #endif      
-            }
+        }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -49,8 +48,8 @@ namespace LoginsManagementSystem.Views
             {
                 switch (item.Tag.ToString())
                 {
-                    case "MainPage":
-                        this.MainFrame.Navigate(typeof(MainPageView));
+                    case "HomePage":
+                        this.MainFrame.Navigate(typeof(HomePageView));
                         if (Window.Current.Bounds.Width < 640)
                         {
                             Splitter.IsPaneOpen = false;
@@ -84,26 +83,6 @@ namespace LoginsManagementSystem.Views
             }
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            //SignIn dialog = new SignIn();
-            //await dialog.ShowAsync();
-
-            //if (dialog.Result == SignInResult.SignInOK)
-            //{
-            //    this.MainFrame.Navigate(typeof(MainPage));
-            //}
-            //else if (dialog.Result == SignInResult.SignInCancel)
-            //{
-            //    Application.Current.Exit();
-            //}
-            //else if (dialog.Result == SignInResult.Nothing)
-            //{
-            //    Application.Current.Exit();
-            //}
-
-        }
 
         private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
         {
