@@ -26,11 +26,11 @@ namespace LoginsManagementSystem.View
         Nothing
     }
 
-    public sealed partial class SignIn : ContentDialog
+    public sealed partial class SignInView : ContentDialog
     {
         public SignInResult Result { get; private set; }
 
-        public SignIn()
+        public SignInView()
         {
             this.InitializeComponent();
             this.Result = SignInResult.Nothing;

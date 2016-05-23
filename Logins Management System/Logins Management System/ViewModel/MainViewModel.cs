@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using LoginsManagementSystem.View;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace LoginsManagementSystem.ViewModel
 {
@@ -20,19 +21,41 @@ namespace LoginsManagementSystem.ViewModel
     {
         #region Proporty 
 
-        //public const string NamePropertyName = "Name";
-        //private string _name;
-        //public string Name
-        //{
-        //    get
-        //    {
-        //        return _name;
-        //    }
-        //    set
-        //    {
-        //        Set(NamePropertyName, ref _name, value);
-        //    }
-        //}
+        private readonly IDataService _dataService;
+
+        public const string MokListPropertyName = "MokList";
+        private List<string> _mokList;
+        public List<string> MokList
+        {
+            get
+            {
+                return _mokList;
+            }
+            set
+            {
+                Set(MokListPropertyName, ref _mokList, value);
+            }
+        }
+        private string _searchText;
+        public string SearchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    MokList = null;
+                }
+                else
+                {
+                    MokList = new List<string> { "Moad", "Eltabu", "Steven" };
+                }
+                Set("SearchText", ref _searchText, value);
+            }
+        }
 
 
         #endregion
@@ -48,21 +71,29 @@ namespace LoginsManagementSystem.ViewModel
                        ?? (_logInCommand = new RelayCommand(
                            async () =>
                            {
-                               SignIn dialog = new SignIn();
-                               await dialog.ShowAsync();
+                               if (!_dataService.IsFirstTime())
+                               {
+                                   InitializationView dialog = new InitializationView();
+                                   await dialog.ShowAsync();
+                               }
+                               else
+                               {
+                                   SignInView dialog = new SignInView();
+                                   await dialog.ShowAsync();
 
-                               //if (dialog.Result == SignInResult.SignInOK)
-                               //{
-                               //    this.MainFrame.Navigate(typeof(MainPage));
-                               //}
-                               //else if (dialog.Result == SignInResult.SignInCancel)
-                               //{
-                               //    Application.Current.Exit();
-                               //}
-                               //else if (dialog.Result == SignInResult.Nothing)
-                               //{
-                               //    Application.Current.Exit();
-                               //}
+                                   if (dialog.Result == SignInResult.SignInOK)
+                                   {
+                                       //this.MainFrame.Navigate(typeof(MainPage));
+                                   }
+                                   else if (dialog.Result == SignInResult.SignInCancel)
+                                   {
+                                       Application.Current.Exit();
+                                   }
+                                   else if (dialog.Result == SignInResult.Nothing)
+                                   {
+                                       Application.Current.Exit();
+                                   }
+                               }
                            }));
             }
         }
@@ -91,7 +122,16 @@ namespace LoginsManagementSystem.ViewModel
 
         #endregion
 
+        #region Constructor
 
-    }
+        public MainViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
+        #endregion
+
+
+        }
 }
 

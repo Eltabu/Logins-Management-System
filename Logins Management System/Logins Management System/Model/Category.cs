@@ -1,4 +1,4 @@
-﻿using System;
+﻿using SQLite;
 
 namespace LoginsManagementSystem.Model
 {
@@ -7,11 +7,11 @@ namespace LoginsManagementSystem.Model
     /// </summary>
     public class Category : IBusinessEntity
     {
-        [SQLite.Net.Attributes.PrimaryKey, SQLite.Net.Attributes.AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int Id
         { get; set; }
 
-        [SQLite.Net.Attributes.Unique]
+        [Unique]
         public string CategoryName
         { get; set; }
     }

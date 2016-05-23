@@ -88,9 +88,11 @@
                         PlaceholderText="Type a name (e.g. eltabu.ca)"
                         TextChanged="AutoSuggestName_TextChanged"
                         QueryIcon="Find"
+                        Text="{Binding SearchText, Mode=TwoWay}"
+                        ItemsSource="{Binding MokList}"
                         QuerySubmitted="AutoSuggestName_QuerySubmitted"
                         SuggestionChosen="AutoSuggestName_SuggestionChosen"
-                        MinWidth="300"                    
+                        MinWidth="300"
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center" />
             </Grid>

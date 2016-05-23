@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿
 
 namespace LoginsManagementSystem.Model
 {
@@ -8,6 +7,8 @@ namespace LoginsManagementSystem.Model
     /// </summary>
     public interface IDataService
     {
+        bool IsFirstTime();
 
+        void initializeDatabase();
     }
 }
