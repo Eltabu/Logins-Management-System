@@ -8,6 +8,6 @@
 
 <h2>Interface</h2>
 <p>
-<img src="http://eltabu.myweb.cs.uwindsor.ca/github/smartbrowser/interface.png">
-<img src="http://eltabu.myweb.cs.uwindsor.ca/github/smartbrowser/interface.png">
+<img src="http://eltabu.myweb.cs.uwindsor.ca/github/LoginsManagementSystem/interface1.png">
+<img src="http://eltabu.myweb.cs.uwindsor.ca/github/LoginsManagementSystem/interface2.png">
 </p>
