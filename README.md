@@ -11,8 +11,3 @@
 <img src="http://eltabu.myweb.cs.uwindsor.ca/github/smartbrowser/interface.png">
 <img src="http://eltabu.myweb.cs.uwindsor.ca/github/smartbrowser/interface.png">
 </p>
-
-<h2>Release Date</h2>
-<p>
-May 2011
-</p>
